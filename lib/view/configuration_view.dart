@@ -60,7 +60,7 @@ class _ConfigurationViewState extends State<ConfigurationView> {
                         (index) {
                           return Disk(
                             color: getRandomColor(),
-                            size: (index + 1) * 20,
+                            size: (index + 1) * baseDiskSize,
                           );
                         },
                       ),
