@@ -2,7 +2,7 @@ import 'dart:ui';
 
 class Disk {
   final Color color;
-  final int size;
+  final double size;
 
   const Disk({
     required this.color,

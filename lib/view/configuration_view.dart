@@ -51,26 +51,28 @@ class _ConfigurationViewState extends State<ConfigurationView> {
               customSpacer(),
               ElevatedButton(
                 onPressed: () {
+                  int diskCount = int.parse(_diskController.text);
+
                   List<Rod> rods = [
                     Rod(
-                      color: Colors.yellow,
                       disks: List.generate(
-                        int.parse(_diskController.text),
+                        diskCount,
                         (index) {
                           return Disk(
-                            color: Colors.yellow,
+                            color: getRandomColor(),
                             size: (index + 1) * 20,
                           );
                         },
                       ),
+                      maxDisks: diskCount,
                     ),
                     Rod(
-                      color: Colors.blue,
                       disks: [],
+                      maxDisks: diskCount,
                     ),
                     Rod(
-                      color: Colors.red,
                       disks: [],
+                      maxDisks: diskCount,
                     ),
                   ];
 

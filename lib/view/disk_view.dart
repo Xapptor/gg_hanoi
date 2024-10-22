@@ -17,9 +17,12 @@ class _DiskViewState extends State<DiskView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.deepPurpleAccent,
       height: 20,
-      width: 100,
+      width: widget.disk.size,
+      decoration: BoxDecoration(
+        color: widget.disk.color,
+        borderRadius: BorderRadius.circular(4),
+      ),
     );
   }
 }

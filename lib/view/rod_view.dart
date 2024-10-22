@@ -18,16 +18,18 @@ class _RodViewState extends State<RodView> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: <Widget>[
         Container(
-          color: Colors.deepPurpleAccent,
-          height: 200,
+          color: Colors.amber,
+          height: (widget.rod.maxDisks * 20) + 100,
+          width: 20,
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: List.generate(
             widget.rod.disks.length,
-            (index) {
+            (int index) {
               return DiskView(
                 disk: widget.rod.disks[index],
               );
