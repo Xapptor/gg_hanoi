@@ -9,7 +9,7 @@ Widget customSpacer({
       height: 24 * multiplier,
     );
 
-Color getRandomColor() => Colors.primaries[Random().nextInt(Colors.primaries.length)];
+Color getRandomColor() => ColorExtension.fromHex('#${Random().nextInt(0xFFFFFF).toRadixString(16).padLeft(6, '0')}');
 
 double baseDiskSize = 33;
 

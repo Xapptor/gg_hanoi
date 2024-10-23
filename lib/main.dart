@@ -3,8 +3,12 @@ import 'package:gg_hanoi/model/rod.dart';
 import 'package:gg_hanoi/view/game_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gg_hanoi/view/configuration_view.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-void main() => runApp(const GGHanoiGame());
+void main() {
+  setUrlStrategy(PathUrlStrategy());
+  runApp(const GGHanoiGame());
+}
 
 class GGHanoiGame extends StatelessWidget {
   const GGHanoiGame({super.key});

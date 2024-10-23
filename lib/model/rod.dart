@@ -11,9 +11,9 @@ class Rod {
   });
 }
 
-List<Rod> basicRods() {
-  int diskCount = 3;
-
+List<Rod> basicRods({
+  int diskCount = 3,
+}) {
   return [
     Rod(
       disks: List.generate(

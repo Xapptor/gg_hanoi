@@ -19,7 +19,8 @@ class GameView extends StatefulWidget {
 }
 
 class _GameViewState extends State<GameView> {
-  int predictedMoves = 0;
+  int originalDiskCount = 0;
+  int minimumMoves = 0;
   int currentMoves = 0;
 
   _checkRodRules({
@@ -60,8 +61,17 @@ class _GameViewState extends State<GameView> {
     setState(() {});
   }
 
-  _getPredictedMoves() {
-    predictedMoves = 0;
+  _calculateMinimumMovesLocally({
+    required int numberOfDisks,
+  }) {
+    minimumMoves = (1 << numberOfDisks) - 1;
+    setState(() {});
+  }
+
+  _calculateMinimumMovesRemotely({
+    required int numberOfDisks,
+  }) {
+    minimumMoves = 0;
     setState(() {});
   }
 
@@ -70,7 +80,7 @@ class _GameViewState extends State<GameView> {
   }
 
   _reset() {
-    widget.rods = basicRods();
+    widget.rods = basicRods(diskCount: originalDiskCount);
     currentMoves = 0;
     setState(() {});
     showResetAlert(context);
@@ -78,8 +88,14 @@ class _GameViewState extends State<GameView> {
 
   @override
   void initState() {
+    originalDiskCount = widget.rods.first.maxDisks;
     super.initState();
-    _getPredictedMoves();
+    _calculateMinimumMovesLocally(
+      numberOfDisks: widget.rods.first.maxDisks,
+    );
+    // _calculateMinimumMovesRemotely(
+    //   numberOfDisks: widget.rods.first.maxDisks,
+    // );
   }
 
   @override
@@ -101,9 +117,9 @@ class _GameViewState extends State<GameView> {
               ),
             ),
             customSpacer(multiplier: 2),
-            const Text(
-              'Predicted Moves: 0',
-              style: TextStyle(
+            Text(
+              'Minimum of Moves: $minimumMoves',
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white,
               ),
