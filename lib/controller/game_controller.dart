@@ -45,6 +45,9 @@ extension StateExtension on GameViewState {
     if (widget.rods[from].disks.isNotEmpty) {
       widget.rods[to].disks.insert(0, widget.rods[from].disks.first);
       widget.rods[from].disks.removeAt(0);
+
+      rodSnapshots.add(widget.rods);
+
       currentMoves++;
 
       // debugPrint("Rods");
@@ -68,6 +71,7 @@ extension StateExtension on GameViewState {
   calculateMinimumMovesLocally({
     required int numberOfDisks,
   }) {
+    // This is the same as (2 ^ numberOfDisks) - 1, It is using the bitwise shift operator.
     minimumMoves = (1 << numberOfDisks) - 1;
     setState(() {});
   }
@@ -150,6 +154,18 @@ extension StateExtension on GameViewState {
 
         debugPrint('Algorithm completed in $elapsedMilliseconds ms');
         debugPrint('Algorithm completed in $elapsedSeconds seconds');
+
+        // debugPrint('');
+        // debugPrint("Rods:");
+        // for (var rodSnap in rodSnapshots) {
+        //   debugPrint("");
+        //   debugPrint("Rod Snap:");
+
+        //   for (var rod in rodSnap) {
+        //     int index = rodSnap.indexOf(rod);
+        //     debugPrint("Rod: ${index} - Disks: ${rod.disks.length}");
+        //   }
+        // }
       }
 
       await Future.delayed(Duration(milliseconds: delayTime));

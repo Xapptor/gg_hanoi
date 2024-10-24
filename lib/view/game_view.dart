@@ -34,6 +34,8 @@ class GameViewState extends State<GameView> {
 
   final ScrollController _scrollController = ScrollController();
 
+  List<List<Rod>> rodSnapshots = [];
+
   @override
   void initState() {
     originalDiskCount = widget.rods.first.maxDisks;
