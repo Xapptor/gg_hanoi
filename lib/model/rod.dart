@@ -12,6 +12,7 @@ class Rod {
 }
 
 List<Rod> basicRods({
+  required bool portrait,
   int diskCount = 3,
 }) {
   return [
@@ -21,7 +22,7 @@ List<Rod> basicRods({
         (index) {
           return Disk(
             color: getRandomColor(),
-            size: (index + 1) * baseDiskSize,
+            size: (index + 1) * baseDiskSize(portrait: portrait),
           );
         },
       ),

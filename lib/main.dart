@@ -44,7 +44,10 @@ final GoRouter _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return GameView(
               title: 'GG Hanoi',
-              rods: (state.extra as List<Rod>?) ?? basicRods(),
+              rods: (state.extra as List<Rod>?) ??
+                  basicRods(
+                    portrait: false,
+                  ),
             );
           },
         ),

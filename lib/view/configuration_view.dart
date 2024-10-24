@@ -17,7 +17,6 @@ class ConfigurationView extends StatefulWidget {
 }
 
 class _ConfigurationViewState extends State<ConfigurationView> {
-  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _diskController = TextEditingController();
 
   @override
@@ -36,13 +35,6 @@ class _ConfigurationViewState extends State<ConfigurationView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                ),
-              ),
-              customSpacer(),
-              TextField(
                 controller: _diskController,
                 decoration: const InputDecoration(
                   labelText: 'Disk',
@@ -60,7 +52,10 @@ class _ConfigurationViewState extends State<ConfigurationView> {
                         (index) {
                           return Disk(
                             color: getRandomColor(),
-                            size: (index + 1) * baseDiskSize,
+                            size: (index + 1) *
+                                baseDiskSize(
+                                  portrait: portrait,
+                                ),
                           );
                         },
                       ),
