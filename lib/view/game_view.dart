@@ -25,10 +25,10 @@ class GameViewState extends State<GameView> {
   int minimumMoves = 0;
   int currentMoves = 0;
 
-  static bool useSlowDelayTime = false;
+  static bool useSlowDelayTime = true;
   bool useDebugPrint = true;
 
-  int delayTime = useSlowDelayTime ? (2 * 1000) : 0;
+  int delayTime = useSlowDelayTime ? (2 * 2000) : 0;
 
   ValueNotifier<bool> reseted = ValueNotifier<bool>(false);
 
@@ -94,7 +94,7 @@ class GameViewState extends State<GameView> {
               customSpacer(multiplier: 3),
               SizedBox(
                 height: widget.rods.first.maxDisks * baseDiskSize(portrait: portrait) +
-                    MediaQuery.of(context).size.height * 0.25,
+                    MediaQuery.of(context).size.height * 0.3,
                 child: RawScrollbar(
                   controller: _scrollController,
                   thumbVisibility: true,

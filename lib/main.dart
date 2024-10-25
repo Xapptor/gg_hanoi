@@ -3,10 +3,10 @@ import 'package:gg_hanoi/model/rod.dart';
 import 'package:gg_hanoi/view/game_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gg_hanoi/view/configuration_view.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+// import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
-  setUrlStrategy(PathUrlStrategy());
+  // setUrlStrategy(PathUrlStrategy());
   runApp(const GGHanoiGame());
 }
 
